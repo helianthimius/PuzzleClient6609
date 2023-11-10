@@ -15,4 +15,15 @@ public class MenuManager : MonoBehaviour
         var addr = GameObject.Find("AddressInput").GetComponent<TMP_InputField>().text;
         NetworkManager.Singleton.Client.Connect(addr);
     }
+    public void Jump()
+    {
+        Message message = Message.Create(MessageSendMode.unreliable, (ushort)NetworkManager.MessageType.Jump);
+        NetworkManager.Singleton.Client.Send(message);
+    }
+    public void Reset()
+    {
+        Message message = Message.Create(MessageSendMode.unreliable, (ushort)NetworkManager.MessageType.Reset);
+        NetworkManager.Singleton.Client.Send(message);
+    }
+
 }

@@ -26,6 +26,15 @@ public class SensorComponent : MonoBehaviour
 
                 NetworkManager.Singleton.Client.Send(message);
             }
+            else if (touch.phase == UnityEngine.TouchPhase.Canceled || touch.phase == UnityEngine.TouchPhase.Ended)
+            {
+                Message message = Message.Create(MessageSendMode.unreliable, (ushort)NetworkManager.MessageType.UpdateTouch);
+
+                message.AddInt((int)0);
+                message.AddInt((int)0);
+
+                NetworkManager.Singleton.Client.Send(message);
+            }
         }
 
     }
