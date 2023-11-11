@@ -18,13 +18,17 @@ public class SensorComponent : MonoBehaviour
 
             if (touch.phase == UnityEngine.TouchPhase.Moved)
             {
-                var moveArrow = touch.position - touch.rawPosition;
-                Message message = Message.Create(MessageSendMode.Unreliable, (ushort)NetworkManager.MessageType.UpdateTouch);
+                if (touch.rawPosition.x > Screen.width / 2 && touch.rawPosition.y < Screen.height / 2)
+                {
 
-                message.AddInt((int)moveArrow.x);
-                message.AddInt((int)moveArrow.y);
+                    var moveArrow = touch.position - touch.rawPosition;
+                    Message message = Message.Create(MessageSendMode.Unreliable, (ushort)NetworkManager.MessageType.UpdateTouch);
 
-                NetworkManager.Singleton.Client.Send(message);
+                    message.AddInt((int)moveArrow.x);
+                    message.AddInt((int)moveArrow.y);
+
+                    NetworkManager.Singleton.Client.Send(message);
+                }
             }
             else if (touch.phase == UnityEngine.TouchPhase.Canceled || touch.phase == UnityEngine.TouchPhase.Ended)
             {

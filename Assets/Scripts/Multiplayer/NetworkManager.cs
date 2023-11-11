@@ -15,7 +15,6 @@ public class NetworkManager : MonoBehaviour
         // Send user touch data
         UpdateTouch = 0,
         Jump = 1,
-        Reset = 2,
     }
 
     // https://en.wikipedia.org/wiki/Singleton_pattern

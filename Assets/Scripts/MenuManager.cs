@@ -20,10 +20,4 @@ public class MenuManager : MonoBehaviour
         Message message = Message.Create(MessageSendMode.Unreliable, (ushort)NetworkManager.MessageType.Jump);
         NetworkManager.Singleton.Client.Send(message);
     }
-    public void Reset()
-    {
-        Message message = Message.Create(MessageSendMode.Unreliable, (ushort)NetworkManager.MessageType.Reset);
-        NetworkManager.Singleton.Client.Send(message);
-    }
-
 }
