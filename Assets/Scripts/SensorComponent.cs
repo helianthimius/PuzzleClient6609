@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Android;
-using RiptideNetworking;
+using Riptide;
 using System;
 
 
@@ -19,7 +19,7 @@ public class SensorComponent : MonoBehaviour
             if (touch.phase == UnityEngine.TouchPhase.Moved)
             {
                 var moveArrow = touch.position - touch.rawPosition;
-                Message message = Message.Create(MessageSendMode.unreliable, (ushort)NetworkManager.MessageType.UpdateTouch);
+                Message message = Message.Create(MessageSendMode.Unreliable, (ushort)NetworkManager.MessageType.UpdateTouch);
 
                 message.AddInt((int)moveArrow.x);
                 message.AddInt((int)moveArrow.y);
@@ -28,7 +28,7 @@ public class SensorComponent : MonoBehaviour
             }
             else if (touch.phase == UnityEngine.TouchPhase.Canceled || touch.phase == UnityEngine.TouchPhase.Ended)
             {
-                Message message = Message.Create(MessageSendMode.unreliable, (ushort)NetworkManager.MessageType.UpdateTouch);
+                Message message = Message.Create(MessageSendMode.Unreliable, (ushort)NetworkManager.MessageType.UpdateTouch);
 
                 message.AddInt((int)0);
                 message.AddInt((int)0);

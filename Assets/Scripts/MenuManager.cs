@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using RiptideNetworking;
+using Riptide;
 using TMPro;
 
 public class MenuManager : MonoBehaviour
@@ -17,12 +17,12 @@ public class MenuManager : MonoBehaviour
     }
     public void Jump()
     {
-        Message message = Message.Create(MessageSendMode.unreliable, (ushort)NetworkManager.MessageType.Jump);
+        Message message = Message.Create(MessageSendMode.Unreliable, (ushort)NetworkManager.MessageType.Jump);
         NetworkManager.Singleton.Client.Send(message);
     }
     public void Reset()
     {
-        Message message = Message.Create(MessageSendMode.unreliable, (ushort)NetworkManager.MessageType.Reset);
+        Message message = Message.Create(MessageSendMode.Unreliable, (ushort)NetworkManager.MessageType.Reset);
         NetworkManager.Singleton.Client.Send(message);
     }
 

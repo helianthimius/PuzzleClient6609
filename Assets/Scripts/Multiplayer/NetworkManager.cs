@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RiptideNetworking;
-using RiptideNetworking.Utils;
+using Riptide;
+using Riptide.Utils;
 using System;
 
 // Written inspired by Riptide Tutorial (Assignment Reference)
@@ -65,7 +65,7 @@ public class NetworkManager : MonoBehaviour
     // This function is called by fix intervals, so arriving messages can be handled here
     private void FixedUpdate()
     {
-        Client.Tick();
+        Client.Update();
     }
 
     private void OnApplicationQuit()
