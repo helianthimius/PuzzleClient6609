@@ -3,7 +3,6 @@ using UnityEngine.Android;
 using Riptide;
 using System;
 
-
 public class SensorComponent : MonoBehaviour
 {
     void Update()
@@ -18,6 +17,8 @@ public class SensorComponent : MonoBehaviour
 
             if (touch.phase == UnityEngine.TouchPhase.Moved)
             {
+                // https://docs.unity3d.com/ScriptReference/Screen.html
+                // Joystick is enabled in lower right quarter
                 if (touch.rawPosition.x > Screen.width / 2 && touch.rawPosition.y < Screen.height / 2)
                 {
 
